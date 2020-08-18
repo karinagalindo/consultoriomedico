@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="start" fill="clear" (click)="close()">
+      <ion-icon style="color:black" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-button (click)="presentActionSheet()" slot="end" fill="clear">
+      <ion-icon  style="color:black" name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar color="secondary">
+    <ion-title>Seleccione la especialidad</ion-title>
+  </ion-toolbar>
+  <ion-item>
+    <ion-label>Especialidad</ion-label>
+    <ion-select (ionChange)="onChange($event)" okText="Seleccionar" cancelText="Cancelar">
+      <ion-select-option *ngFor="let cita of citasRooms">{{cita.especialidad}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list>
+      <ion-toolbar color="secondary">
+          <ion-title>Doctores disponibles</ion-title>
+        </ion-toolbar>
+      <ion-item  *ngFor="let doctor of doctores">
+        <ion-label>
+          <h3>Doctor: {{doctor.nombre}}</h3>
+          <h3>Numero de telefono: {{doctor.telefono}}</h3>
+          <h3>Especialidad: {{doctor.especialidad}}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-toolbar color="secondary">
+            <ion-title>Seleccione la fecha</ion-title>
+          </ion-toolbar>
+    <ion-item>
+      <ion-label position="floating">Dia/Mes/Año</ion-label>
+      <ion-datetime  displayFormat="DD/MMM/YYYY" min="2020-08-17" max="3030"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Hora</ion-label>
+      <ion-datetime displayFormat="HH:mm " minuteValues="0,15,30,45"></ion-datetime>
+    </ion-item>
+    
+
+</ion-content>
